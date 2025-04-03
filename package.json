@@ -16,6 +16,7 @@
     "vite": "^6.2.0"
   },
   "dependencies": {
+    "@spz-loader/core": "^0.1.0",
     "playcanvas": "^2.6.1"
   }
 }

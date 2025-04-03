@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@spz-loader/core':
+        specifier: ^0.1.0
+        version: 0.1.0
       playcanvas:
         specifier: ^2.6.1
         version: 2.6.1
@@ -326,6 +329,10 @@ packages:
     resolution: {integrity: sha512-yAkUOkIKZlK5dl7u6dg897doBgLXmUHhIINM2c+sND3DZwnrdQkkSiDh7N75Ll4mM4dxSkYfXqU9fW3lLkMFug==}
     cpu: [x64]
     os: [win32]
+
+  '@spz-loader/core@0.1.0':
+    resolution: {integrity: sha512-atqn/DLy0xNkqRgz3l/5CD12y1M44JdjTmAFQYDKvzf0pIyj+NlJ/PeCRlSJQfXmZ2JndNOCpcGOFVldANf/EA==}
+    engines: {node: '>=16', pnpm: '>=8'}
 
   '@types/estree@1.0.7':
     resolution: {integrity: sha512-w28IoSUCJpidD/TGviZwwMJckNESJZXFu7NBZ5YJ4mEUnNraUn9Pm8HSZm/jDF1pDWYKspWE7oVphigUPRakIQ==}
@@ -713,6 +720,8 @@ snapshots:
 
   '@rollup/rollup-win32-x64-msvc@4.39.0':
     optional: true
+
+  '@spz-loader/core@0.1.0': {}
 
   '@types/estree@1.0.7': {}
 
