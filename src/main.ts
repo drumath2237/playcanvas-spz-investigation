@@ -11,7 +11,11 @@ import {
 // @ts-ignore
 import { CameraControls } from "playcanvas/scripts/esm/camera-controls.mjs"
 
-const main = () => {
+import { loadSpz } from "@spz-loader/core"
+
+import splatUrl from "../assets/sundubu.spz?url"
+
+const main = async () => {
 
   const canvas = document.querySelector<HTMLCanvasElement>('#renderCanvas');
   if (!canvas) {
@@ -50,6 +54,12 @@ const main = () => {
     type: 'box'
   });
   app.root.addChild(box);
+
+  const sundubuSpz = await fetch(splatUrl).then(res => res.arrayBuffer())
+
+  const gsCloud = await loadSpz(new Uint8Array(sundubuSpz))
+  console.log(gsCloud);
+
 }
 
 main()
