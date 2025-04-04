@@ -12,17 +12,17 @@ importers:
         specifier: ^0.1.0
         version: 0.1.0
       playcanvas:
-        specifier: ^2.6.1
-        version: 2.6.1
+        specifier: ^2.6.2
+        version: 2.6.2
     devDependencies:
       '@biomejs/biome':
         specifier: ^1.9.4
         version: 1.9.4
       typescript:
-        specifier: ~5.7.2
+        specifier: ~5.7.3
         version: 5.7.3
       vite:
-        specifier: ^6.2.0
+        specifier: ^6.2.5
         version: 6.2.5
 
 packages:
@@ -434,8 +434,8 @@ packages:
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
 
-  playcanvas@2.6.1:
-    resolution: {integrity: sha512-JKrL+e3v11iONtBGg4iYTlziQPSH1RwDVO4buQ/zsOgEY6MSEl0Jt6agQUvFBjGq+gFPkoU72uNUYQjhKSlKDw==}
+  playcanvas@2.6.2:
+    resolution: {integrity: sha512-rK7yXlQoto1ezLzvH6beqheh1JbxvvbGzmxxjETLyFPcdo3iHwRbvQsbmiBOs7EpXfHnED13nZ03kD7BrjfWww==}
     engines: {node: '>=18.0.0'}
 
   postcss@8.5.3:
@@ -848,7 +848,7 @@ snapshots:
 
   picocolors@1.1.1: {}
 
-  playcanvas@2.6.1:
+  playcanvas@2.6.2:
     dependencies:
       '@types/webxr': 0.5.21
       '@webgpu/types': 0.1.60
