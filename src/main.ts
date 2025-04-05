@@ -13,7 +13,7 @@ import { CameraControls } from "playcanvas/scripts/esm/camera-controls.mjs"
 
 import { loadSpz } from "@spz-loader/core"
 
-import splatUrl from "../assets/sundubu.spz?url"
+import splatUrl from "../assets/pizza.spz?url"
 
 const main = async () => {
 
