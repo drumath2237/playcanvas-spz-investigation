@@ -38,28 +38,29 @@ const main = async () => {
   camera.addComponent('camera', {
     clearColor: new Color(0.2, 0.2, 0.2)
   });
-  camera.translate(0, 0, 5);
+  camera.translate(0, 0.3, 0.7);
   camera.addComponent("script")
   camera.script?.create(CameraControls)
   app.root.addChild(camera);
 
-  const light = new Entity('light');
-  light.addComponent('light', {
-    type: 'directional',
-  });
-  light.setEulerAngles(15, 30, 0);
-  app.root.addChild(light);
+  // const light = new Entity('light');
+  // light.addComponent('light', {
+  //   type: 'directional',
+  // });
+  // light.setEulerAngles(15, 30, 0);
+  // app.root.addChild(light);
 
-  const box = new Entity('cube');
-  box.addComponent('model', {
-    type: 'box'
-  });
-  app.root.addChild(box);
+  // const box = new Entity('cube');
+  // box.addComponent('model', {
+  //   type: 'box'
+  // });
+  // app.root.addChild(box);
 
   const spzBuffer = await fetch(splatUrl).then(res => res.arrayBuffer())
-  const gsCloud = await loadSpz(new Uint8Array(spzBuffer))
+  const gsCloud = await loadSpz(new Uint8Array(spzBuffer), { colorScaleFactor: 1.0 })
   const resource = parse(gsCloud, app.graphicsDevice)
   const spzEntity = resource.instantiate()
+  spzEntity.rotate(180, 0, 0)
   app.root.addChild(spzEntity)
 
 }

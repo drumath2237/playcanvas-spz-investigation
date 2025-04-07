@@ -5,36 +5,39 @@ import {
 } from "playcanvas"
 
 const parse = (gs: GaussianCloud, device: GraphicsDevice) => {
-  const f32arr = () => new Float32Array(gs.numPoints)
+  const count = gs.numPoints;
+
+  const f32arr = () => new Float32Array(count)
+  const logit = (x: number) => Math.log(x / (1 - x))
 
   const sPos = [f32arr(), f32arr(), f32arr()]
   const sCol = [f32arr(), f32arr(), f32arr(), f32arr()]
   const sScale = [f32arr(), f32arr(), f32arr(),]
   const sRot = [f32arr(), f32arr(), f32arr(), f32arr(),]
 
-  for (let i = 0; i < gs.numPoints; i++) {
+  for (let i = 0; i < count; i++) {
     sPos[0][i] = gs.positions[i * 3 + 0]
     sPos[1][i] = gs.positions[i * 3 + 1]
     sPos[2][i] = gs.positions[i * 3 + 2]
 
-    sCol[0][i] = gs.colors[i * 3 + 0]
-    sCol[1][i] = gs.colors[i * 3 + 1]
-    sCol[2][i] = gs.colors[i * 3 + 2]
-    sCol[3][i] = gs.alphas[i]
+    sCol[0][i] = gs.colors[i * 3 + 0] - 0.5
+    sCol[1][i] = gs.colors[i * 3 + 1] - 0.5
+    sCol[2][i] = gs.colors[i * 3 + 2] - 0.5
+    sCol[3][i] = logit(gs.alphas[i])
 
-    sScale[0][i] = gs.scales[i * 3 + 0]
-    sScale[1][i] = gs.scales[i * 3 + 1]
-    sScale[2][i] = gs.scales[i * 3 + 2]
+    sScale[0][i] = Math.log(gs.scales[i * 3 + 0])
+    sScale[1][i] = Math.log(gs.scales[i * 3 + 1])
+    sScale[2][i] = Math.log(gs.scales[i * 3 + 2])
 
-    sRot[0][i] = gs.rotations[i * 4 + 0]
-    sRot[1][i] = gs.rotations[i * 4 + 1]
-    sRot[2][i] = gs.rotations[i * 4 + 2]
-    sRot[3][i] = gs.rotations[i * 4 + 3]
+    sRot[0][i] = -gs.rotations[i * 4 + 1]
+    sRot[1][i] = -gs.rotations[i * 4 + 2]
+    sRot[2][i] = gs.rotations[i * 4 + 3]
+    sRot[3][i] = gs.rotations[i * 4 + 0]
   }
 
   const gsData = new GSplatData([{
     name: "vertex",
-    count: gs.numPoints,
+    count: count,
     properties: [
       {
         name: "x",
