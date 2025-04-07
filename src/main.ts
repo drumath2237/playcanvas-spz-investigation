@@ -14,6 +14,7 @@ import { CameraControls } from "playcanvas/scripts/esm/camera-controls.mjs"
 import { loadSpz } from "@spz-loader/core"
 
 import splatUrl from "../assets/pizza.spz?url"
+import { parse } from "./parse";
 
 const main = async () => {
 
@@ -55,10 +56,11 @@ const main = async () => {
   });
   app.root.addChild(box);
 
-  const sundubuSpz = await fetch(splatUrl).then(res => res.arrayBuffer())
-
-  const gsCloud = await loadSpz(new Uint8Array(sundubuSpz))
-  console.log(gsCloud);
+  const spzBuffer = await fetch(splatUrl).then(res => res.arrayBuffer())
+  const gsCloud = await loadSpz(new Uint8Array(spzBuffer))
+  const resource = parse(gsCloud, app.graphicsDevice)
+  const spzEntity = resource.instantiate()
+  app.root.addChild(spzEntity)
 
 }
 
